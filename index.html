@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <title>반응형(TBH_SHOP 페이지)</title>
+    <style>
+        body{ 
+            background: linear-gradient( 90deg, white 50%, darkblue 0);
+            background-size: 10px;
+        }
+        .wrapper{ width: 1200px; margin: auto;
+                background-color: pink;
+                display: flex; flex-wrap:wrap;
+        }
+        header{width: 230px;  background-color: white;}
+        .container{width: calc( 100% - 230px);
+            background-color: #fff;
+            display: flex;
+        }
+        section{ width: calc(100% - 200px);  background-color: #e4e4e4;}
+        aside{width: 200px;  background-color:#fff;}
+
+        footer{width: 1200px;  margin: auto;
+            height: 200px; background-color: #fff;
+            display: flex;
+            border-top: 1px solid #ededed;
+        }
+        footer h1{ width: 230px; padding: 35px 0;
+            border-right: 1px solid #ededed;
+        }
+        footer>div>ul{ display: flex;}
+        footer ul a{ display: block; padding: 10px;}
+        footer address{ font-style: normal; line-height: 20px; text-indent: 10px;}
+
+        /* DESIGN */
+        header{
+            display: flex; justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1{font-size: 0; text-align: center; padding: 50px 0;}
+        .lnb{font-size: 16px; font-weight: bold; width: 80%;}
+        .lnb li{line-height: 40px; border-bottom: 1px solid #ebebeb;}
+        .lnb a{display: block; background-image: url(./image/blit_arrow.png);
+                background-repeat: no-repeat;
+                background-position: right center;
+                text-align: left;
+                transition: 1s;
+        }
+        .lnb li:hover{background-color: darkblue;
+            color: white; text-align: center;}
+        .lnb a:hover{text-align: center;}
+
+        /* SECTION DESIGN */
+        .mainBanner img{width: 100%;}
+        .search{background-color: gray; padding: 10px; border-radius: 5px;}
+        .search>div{ background-color: #fff; padding: 10px;  position: relative;
+            border-radius: 5px;}
+        .search input{background-color: white;
+            border: 1px solid darkblue; border-radius: 8px;
+                 height: 30px; width: 85%;
+               
+        }
+        .search div::after{ content: ''; display: block;
+        width: 30px; height: 30px; background-color: gray; 
+        top:15px; right: 15px; background-image: url(./image/btn_search.png);
+        z-index: 99; background-size: cover; position: absolute;
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: 10 2px;
+        border-radius: 0 5px 5px 0;
+        }
+
+        .search label{ margin-right: 15px; }
+        .pbProduct ul{display: flex; flex-wrap: wrap;}
+        aside{display: flex; flex-direction: column;}
+
+        .pbProduct,
+        .pbNutrition,
+        .pbService{ padding: 1rem;}
+
+        .contentTitle {display: flex; justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .contentTitle+p{ margin-bottom: 1rem;}
+        .pbProduct ul{display: flex; flex-wrap: wrap;}
+        .pbProduct li{width: calc(100% / 9); text-align: center;}
+        .pbProduct span{display: block; margin-bottom: 1rem;}
+        .contents{display: flex;}
+        .contents>div{width: 50%;}
+        .more{border: 2px solid #FFF; border-radius: 4px;
+            padding: 3px 5px 0 5px;} 
+            .contents .more {font-size: 12px;}
+        .pbService img{ width: 100%;}
+        .pbService li{ list-style: square; margin-left: 20px;
+                    line-height: 30px;
+                }
+        .pbNutrition{text-align: center;}
+        .pbNutrition table{width: 100%; border-collapse: collapse;}
+        .pbNutrition th{background-color: white; height: 30px;
+                    border: 1px solid #fff;
+            }
+        .pbNutrition td{ text-align: center; height: 30px;
+                border:1px solid #fff;
+                border-bottom: none; width: 25%;
+        }
+        .pbNutrition table:nth-of-type(2) td{ border-bottom: 1px solid #fff;}
+        .smallbanner img{ width: 100%; }
+
+        @media screen and (max-width:1250px){
+           .wrapper{width: 98%;}
+           footer{width: 98%;}
+        }
+
+        @media screen and (max-width:1024px){
+            .container{flex-direction: column;}
+            section{width: 100%;}
+            aside{ width: 100%; flex-direction: row;
+                justify-content: space-between;
+            }
+            aside>div{width: 33.3333333333333333%;}
+        }
+
+        /* @media screen and (max-width:760px){
+             }
+         깨지는 부분 보정할 브레이크 포인트 */
+        
+
+        @media screen and (max-width:600px){
+        /* @media screen and (max-width:480px){  */
+           .wrapper{ flex-direction: column;}
+           header {width: 100%; height: auto;}
+            .lnb{width: 100%;}
+            .lnb ul{display: flex; flex-wrap: wrap;}
+            .lnb li{width: 33.3333333333333333%;
+                border: 1px solid #ebebeb;
+                border-right: none;
+                border-bottom: none;
+            }
+            .lnb li:nth-child(3n){border-right: 1px solid #ebebeb; }
+
+            .lnb a{width: 90%; margin: auto;
+                background-image: none;
+            }
+
+           .container{ width: 100%; }
+           footer{ padding-left: 0;}
+           .pbProduct li{width: calc(100% / 9); text-align: center;}
+           .contents{flex-direction: column;}
+            .contents>div{width: 100%;}
+            footer h1{ display: none; }
+            footer address{ padding-bottom: 10px;}
+
+        }
+
+        
+    </style>
+   
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1><img src="./image/logo.png" alt=""> TBH_SHOP</h1>
+            <!-- nav.lnb>ul>li>a -->
+            <nav class="lnb">
+                <ul>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">NEW</a></li>
+                    <li><a href="#">TOP</a></li>
+                    <li><a href="#">BOTTOM</a></li>
+                    <li><a href="#">OUTER</a></li>
+                    <li><a href="#">ACC</a></li>
+                </ul>
+            </nav>
+
+            <div class="pbTell"></div>
+            <div class="weFollow"></div>
+            <div class="pbNews"></div>
+            <div class="pbEvent"></div>
+        </header>
+        <div class="container">
+            <section>
+               <div class="mainBanner">
+                   <img src="./image/bn_main.jpg" alt="">
+               </div>
+               <div class="search">
+                   <div>
+                       <label for=""> <b> 다양한 브랜드 검색하기</b></label>
+                        <input type="search" id="search">
+                    </div>
+               </div>
+               <div class="pbProduct">
+                   <div class="contentTitle">
+                       <h2>SPRING, NEW ARRIVAR</h2>
+                       <div class="more">자세히 보기</div>
+                   </div>
+                   <P>4월, 봄을 맞이하는 신상아이템 NEW ARRIVAR</P>
+                   <ul>
+                       <li><a href="">
+                            <img src="./image/list_product_01.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_02.png" alt="">
+                            <span>BLOUSE</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_03.png" alt="">
+                            <span>BLOUSE</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_04.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_05.png" alt="">
+                            <span>DRESS</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_06.png" alt="">
+                            <span>ONEPIECE</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_07.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_08.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_09.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_10.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_11.png" alt="">
+                            <span>OUTER</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_12.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_13.png" alt="">
+                            <span>BIKINI</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_14.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_15.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_16.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_17.png" alt="">
+                            <span>JACKET</span></a>
+                        </li>
+                       <li><a href="">
+                            <img src="./image/list_product_18.png" alt="">
+                            <span>TOP</span></a>
+                        </li>
+                     
+                   </ul>
+               </div>
+               <!-- pbProduct end -->
+               <div class="contents">
+                    <div class="pbNutrition">
+                        <div class="contentTitle">
+                            <h2>MD'S PICK | BEST ITEM |</h2>
+                            <div class="more">MORE</div>
+                        </div>
+                        <div>
+                            <img src="./image/list_product_15.png" alt="">
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>총기장</th>
+                                        <th>어깨</th>
+                                        <th>팔길이</th>
+                                        <th>가슴</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>71</td>
+                                        <td>-</td>
+                                        <td>54cm</td>
+                                        <td>102cm</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>계절감</th>
+                                        <th>착용감</th>
+                                        <th>신축성</th>
+                                        <th>촉감</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>봄/가을</td>
+                                        <td>적당함</td>
+                                        <td>적당함</td>
+                                        <td>부드러움</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                            <!-- pbNutrition end -->
+                <div class="pbService">
+                                <div class="contentTitle">
+                                    <h2>| 5252 BY OIOI | 22SS</h2>
+                                    <div class="more">MORE</div>
+                                </div>
+                                <P>블랙핑크 로제와 함께하는 5252 BY OIOI 22SS 신상</P>
+                                <img src="./image/img_service.png" alt="">
+                                <ul>
+                                    <li>TBH_SHOP SPRING SALE TIME</li>
+                                    <li>봄맞이 신상 할인 10% off</li>
+                                    <li>신상을 준비하는 현명한 선택</li>
+                                </ul>
+                            <!-- pbService end -->
+                    </div>
+            </div> 
+            </section>
+            <aside class="smallbanner">
+                <div><img src="./image/bn_rwd_01.jpg" alt=""></div>
+                <div><img src="./image/bn_rwd_02.jpg" alt=""></div>
+                <div><img src="./image/bn_rwd_03.jpg" alt=""></div>
+            </aside>
+        </div>
+        <footer>
+            <h1><img src="./image/logo.png" alt=""></h1>
+            <div>
+                <ul>
+                    <li><a href="#">개인정보취급 방침</a></li>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">사이트맵</a></li>
+                </ul>
+                <address>
+                    <ul>
+                        <li>TDN SHOP 대표자: 안희빈</li>
+                        <li>대표 홈페이지:www. tbh_shop.co.kr</li>
+                        <li>2022 TBH_SHOP All Right Reserved.</li>
+                    </ul>
+                </address>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
